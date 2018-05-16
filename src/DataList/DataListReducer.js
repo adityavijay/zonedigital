@@ -1,17 +1,20 @@
-import {actions, visibilityFilters} from './DataListActions'
+import {actions} from './DataListActions'
 
 const initialState = {
     dataLists:[{listUsers:[], listName:''}],
-    visibilityFilter:visibilityFilters.showAll
+    filters:['ShowAll'],
+    visibilityFilter:'ShowAll'
 }
 
 export default function (state= initialState, action){
     switch(action.type){
         case actions.addDataList:
-        return {...state, dataLists: state.dataLists.concat([action.payLoad])};
+          return {...state, 
+            filters: state.filters.concat([`Show${action.payLoad.listName}`]),
+            dataLists: state.dataLists.concat([action.payLoad])};
 
         case actions.setVisibilityFilter:
-        return {...state, visibilityFilter: action.filter}
+          return {...state, visibilityFilter: action.filter}
 
         default: return state;
     }

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {visibilityFilters} from './DataListActions';
 
 export class FilterDropdown extends Component{
     constructor(props){
@@ -13,7 +12,7 @@ export class FilterDropdown extends Component{
     render(){
         return (<select onChange = {this.handleChange}>
             {
-                Object.values(visibilityFilters).map((val, key)=><option key={key}>{val}</option>)
+                Object.values(this.props.filters).map((val, key)=><option key={key}>{val}</option>)
             }
         </select>);
     }
