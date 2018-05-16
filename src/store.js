@@ -2,9 +2,10 @@ import React from 'react';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 import reducer from './DataList/DataListReducer';
 
-const store = createStore(reducer, applyMiddleware(logger));
+const store = createStore(reducer, applyMiddleware(logger, thunk));
 
 export default ({children})=>{
 	return (

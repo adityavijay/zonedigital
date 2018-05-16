@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import {visibilityFilters, addDataList, setVisibilityFilter} from './DataListActions'
+import {visibilityFilters, addDataList, setVisibilityFilter, fetchDataList} from './DataListActions'
 import {FilterDropdown} from './DataListFilterDropdownComponent';
 import {ListItem} from './DataListItemComponent';
 
 class ListContainer extends Component{
     componentWillMount(){
-
+        this.props.fetchDataList('https://reqres.in/api/users?page=1', 'A');
+        this.props.fetchDataList('https://reqres.in/api/users?page=2', 'B');
     }
     render(){
         console.log(this.props.dataLists);
@@ -32,6 +33,6 @@ const filterDataList = (state)=>state.dataLists.filter((listData)=>{
 });
 
 export default connect((state)=>({dataLists:filterDataList(state)}),
-(dispatch)=>({changeFilterTo:(filter)=>
+(dispatch)=>({fetchDataList:(url, listName)=>dispatch(fetchDataList(url, listName)) , changeFilterTo:(filter)=>
     dispatch(setVisibilityFilter(filter))}))
 (ListContainer);

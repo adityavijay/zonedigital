@@ -1,7 +1,7 @@
 import {actions, visibilityFilters} from './DataListActions'
 
 const initialState = {
-    dataLists:[{listUsers:['aditya', 'vijay'], listName:'A'}, {listUsers:['aditya', 'vijay'], listName:'B'}],
+    dataLists:[{listUsers:[], listName:''}],
     visibilityFilter:visibilityFilters.showAll
 }
 
