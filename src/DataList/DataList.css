@@ -1,0 +1,10 @@
+.dataListContainer{
+    margin-top: 20px;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.dataList{
+    padding-left: 0;
+    margin: 10px 15px;
+}

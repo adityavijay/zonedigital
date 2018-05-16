@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {visibilityFilters, addDataList, setVisibilityFilter, fetchDataList} from './DataListActions'
 import {FilterDropdown} from './DataListFilterDropdownComponent';
 import {ListItem} from './DataListItemComponent';
+import './DataList.css';
 
 class ListContainer extends Component{
     componentWillMount(){
@@ -12,13 +13,15 @@ class ListContainer extends Component{
     }
     render(){
         console.log(this.props.dataLists);
-        return (<div><FilterDropdown filters={this.props.filters} changeFilterTo = {this.props.changeFilterTo}/><ul>{
-            this.props.dataLists.map((list)=>list.listUsers.map((val, key)=><ListItem key={key} item={val}/>))
-            }</ul>
+        return (<div className="dataListContainer">
+                <FilterDropdown filters={this.props.filters} changeFilterTo = {this.props.changeFilterTo}/>
+                <ul className="dataList">{
+                    this.props.dataLists.map((list)=>list.listUsers.map((val, key)=><ListItem key={key} item={val}/>))
+                }</ul>
             </div>);
     }
 }
-//{dataLists:[{listUsers, listName},{listUsers, listName}], }
+
 const filterDataList = (state)=>state.dataLists.filter((listData)=>{
     switch(state.visibilityFilter){
         case 'ShowAll': return true;
@@ -29,10 +32,12 @@ const filterDataList = (state)=>state.dataLists.filter((listData)=>{
 });
 
 export default connect((state)=>
-({dataLists:filterDataList(state), 
-    filters: state.filters}),
-(dispatch)=>({fetchDataList:(url, listName)=>
-    dispatch(fetchDataList(url, listName)),
-    changeFilterTo:(filter)=>
-    dispatch(setVisibilityFilter(filter))}))
+  ({dataLists:filterDataList(state), 
+      filters: state.filters}),
+  (dispatch)=>({fetchDataList:(url, listName)=>
+      dispatch(fetchDataList(url, listName)),
+      changeFilterTo:(filter)=>
+      dispatch(setVisibilityFilter(filter))
+  })
+)
 (ListContainer);
