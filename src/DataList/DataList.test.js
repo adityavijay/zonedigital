@@ -8,7 +8,7 @@ configure({ adapter: new Adapter() });
 
 describe('List Container Rendering', ()=>{
     it('renders dropdown and data list', ()=>{
-        const wrapper = shallow(<FilterDropdown/>);
+        const wrapper = shallow(<FilterDropdown filters={[]} changeFilterTo={()=>{}} />);
         expect(2).toBe(2);
     })
 
