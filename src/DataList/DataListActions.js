@@ -14,8 +14,8 @@ export const createDataList = (users, listName)=>{
 
 
 export const fetchDataList = (url, listName)=>(dispatch)=>{
-  axios.get(url).
-  then((res)=>res.data.data).
-  then((users)=>createDataList(users, listName)).
-  then((dataList)=>dispatch(addDataList(dataList)));
+  axios.get(url).then((res)=>res.data.data).then(
+    (users)=>createDataList(users,
+     listName)).then((dataList)=>dispatch(addDataList(dataList))
+    );
 }
