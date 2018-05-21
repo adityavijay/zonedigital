@@ -1,4 +1,4 @@
-import axios from 'axios';
+import fetch from 'node-fetch';
 
 
 export const actions = {addDataList:'AddDataList', setVisibilityFilter:'SetVisibilityFilter'}
@@ -14,7 +14,8 @@ export const createDataList = (users, listName)=>{
 
 
 export const fetchDataList = (url, listName)=>(dispatch)=>{
-  axios.get(url).then((res)=>res.data.data).then(
+  fetch(url).then((res)=>res.json()
+  ).then((json)=>json.data).then(
     (users)=>createDataList(users,
      listName)).then((dataList)=>dispatch(addDataList(dataList))
     );

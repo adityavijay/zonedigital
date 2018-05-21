@@ -12,7 +12,6 @@ class ListContainer extends Component{
       this.props.fetchDataList('https://reqres.in/api/users?page=2', 'B');
     }
     render(){
-      console.log(this.props.dataLists);
       return (<div className="dataListContainer">
               <FilterDropdown filters={this.props.filters} changeFilterTo = {this.props.changeFilterTo}/>
               <ul className="dataList">{

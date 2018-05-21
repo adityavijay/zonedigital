@@ -7,5 +7,4 @@ export class ListItem extends Component{
     }
 }
 
-//ListItem.propTypes = {item: PropTypes.required};
 ListItem.propTypes = {item:PropTypes.string.isRequired}
