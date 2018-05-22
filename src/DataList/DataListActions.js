@@ -1,10 +1,15 @@
 import fetch from 'node-fetch';
 
 
-export const actions = {addDataList:'AddDataList', setVisibilityFilter:'SetVisibilityFilter', fetchError:'FetchError'}
+export const actions = {addDataList:'AddDataList',
+  setVisibilityFilter:'SetVisibilityFilter', 
+  fetching:'fetching',
+  fetchError:'FetchError'
+}
 
 export const addDataList = (dataList)=>({type:actions.addDataList, payLoad: dataList});
 export const setVisibilityFilter = (filter)=>({type:actions.setVisibilityFilter, filter});
+export const fetchRequest = ()=>({type:actions.fetching});
 export const fetchError = (error)=>({type:actions.fetchError, error});
 
 export const createDataList = (users, listName)=>{
@@ -14,7 +19,8 @@ export const createDataList = (users, listName)=>{
 
 
 export const fetchDataList = (url, listName)=>(dispatch)=>{
-  fetch(url).then((res)=>res.json()
+  dispatch(fetchRequest());
+  return fetch(url).then((res)=>res.json()
   ).then((json)=>json.data).then(
     (users)=>createDataList(users,
      listName)).then(
@@ -22,4 +28,4 @@ export const fetchDataList = (url, listName)=>(dispatch)=>{
     ).catch((err)=>{
       dispatch(fetchError(err.message))
     });
-}
+  }

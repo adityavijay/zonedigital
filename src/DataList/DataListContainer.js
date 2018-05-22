@@ -17,6 +17,7 @@ class ListContainer extends Component{
               <ul className="dataList">{
                   this.props.dataLists.map((list)=>list.listUsers.map((val, key)=><ListItem key={key} item={val}/>))
               }</ul>
+              {this.props.fetching?<div>...fetching List</div>:""}
               {!!this.props.fetchError?<div>{this.props.fetchError}</div>:""}
           </div>);
     }
@@ -34,6 +35,7 @@ const filterDataList = (state)=>state.dataLists.filter((listData)=>{
 export default connect((state)=>
   ({dataLists:filterDataList(state), 
     filters: state.filters,
+    fetching: state.fetching,
     fetchError:state.fetchError}),
   (dispatch)=>({fetchDataList:(url, listName)=>
     dispatch(fetchDataList(url, listName)),
