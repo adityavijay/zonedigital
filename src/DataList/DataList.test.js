@@ -1,15 +1,11 @@
 import React from 'react';
 import DataListContainer from './DataListContainer';
-import {FilterDropdown} from './DataListFilterDropdownComponent';
-import {shallow, configure} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import StoreProvider from '../store';
+import renderer from 'react-test-renderer';
 
-configure({ adapter: new Adapter() });
-
-describe('List Container Rendering', ()=>{
-    it('renders dropdown and data list', ()=>{
-        const wrapper = shallow(<FilterDropdown filters={[]} changeFilterTo={()=>{}} />);
-        expect(2).toEqual(2);
-    })
-
+describe('Data List renderer',()=>{
+  it('renders correctly', ()=>{
+    const tree = renderer.create(<StoreProvider><DataListContainer/></StoreProvider>).toJSON;
+    expect(tree).toMatchSnapshot();
+  })
 })
