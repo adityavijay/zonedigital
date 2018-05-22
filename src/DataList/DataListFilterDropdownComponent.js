@@ -11,9 +11,9 @@ export class FilterDropdown extends Component{
   }
   render(){
     return (<select onChange = {this.handleChange}>
-        {
-            this.props.filters.map((val, key)=><option key={key}>{val}</option>)
-        }
+      {
+        this.props.filters.map((val, key)=><option key={key}>{val}</option>)
+      }
     </select>);
   }
 }  
