@@ -1,11 +1,11 @@
 import fetch from 'node-fetch';
 
 
-export const actions = {addDataList:'AddDataList', setVisibilityFilter:'SetVisibilityFilter'}
+export const actions = {addDataList:'AddDataList', setVisibilityFilter:'SetVisibilityFilter', fetchError:'FetchError'}
 
 export const addDataList = (dataList)=>({type:actions.addDataList, payLoad: dataList});
 export const setVisibilityFilter = (filter)=>({type:actions.setVisibilityFilter, filter});
-
+export const fetchError = (error)=>({type:actions.fetchError, error});
 
 export const createDataList = (users, listName)=>{
   const userNames = users.map((user)=>`${user.first_name} ${user.last_name}`);
@@ -17,6 +17,9 @@ export const fetchDataList = (url, listName)=>(dispatch)=>{
   fetch(url).then((res)=>res.json()
   ).then((json)=>json.data).then(
     (users)=>createDataList(users,
-     listName)).then((dataList)=>dispatch(addDataList(dataList))
-    );
+     listName)).then(
+       (dataList)=>dispatch(addDataList(dataList))
+    ).catch((err)=>{
+      dispatch(fetchError(err.message))
+    });
 }
