@@ -44,6 +44,7 @@ export default connect((state)=>
   })
 )(ListContainer);
 
+
 ListContainer.propTypes = {filters:PropTypes.array.isRequired,
   fetchDataList: PropTypes.func.isRequired,
   changeFilterTo: PropTypes.func.isRequired
