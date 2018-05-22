@@ -1,5 +1,9 @@
 import fetch from 'node-fetch';
 
+const createDataList = (users, listName)=>{
+  const userNames = users.map((user)=>`${user.first_name} ${user.last_name}`);
+  return {listUsers:userNames, listName}
+}
 
 export const actions = {addDataList:'AddDataList',
   setVisibilityFilter:'SetVisibilityFilter', 
@@ -11,13 +15,6 @@ export const addDataList = (dataList)=>({type:actions.addDataList, payLoad: data
 export const setVisibilityFilter = (filter)=>({type:actions.setVisibilityFilter, filter});
 export const fetchRequest = ()=>({type:actions.fetching});
 export const fetchError = (error)=>({type:actions.fetchError, error});
-
-export const createDataList = (users, listName)=>{
-  const userNames = users.map((user)=>`${user.first_name} ${user.last_name}`);
-  return {listUsers:userNames, listName}
-}
-
-
 export const fetchDataList = (url, listName)=>(dispatch)=>{
   dispatch(fetchRequest());
   return fetch(url).then((res)=>res.json()
