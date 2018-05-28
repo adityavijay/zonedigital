@@ -8,8 +8,8 @@ const store = createStore(reducer, applyMiddleware(thunk));
 
 export default ({children})=>{
 	return (
-			<Provider store={store}>
-				{children}
-			</Provider>
-		);
+    <Provider store={store}>
+      {children}
+    </Provider>
+  );
 }	
