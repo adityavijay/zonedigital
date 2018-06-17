@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import StoreProvider from './store';
 import ListContainer from './DataList/DataListContainer';
-
+import {Counter} from './Counter/counter';
 import logo from './logo.svg';
 import './App.css';
 
@@ -15,6 +15,7 @@ class App extends Component {
             <h1 className="App-title">Data merge and filtering</h1>
           </header>
           <ListContainer/>
+          <Counter/>
         </div>
       </StoreProvider>
     );

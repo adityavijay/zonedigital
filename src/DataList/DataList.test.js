@@ -1,8 +1,8 @@
 import React from 'react';
 import DataListContainer from './DataListContainer';
 import StoreProvider from '../store';
-import renderer from 'react-test-renderer';
 import getUser from './user';
+
 /*
 describe('Data List renderer',()=>{
   it('renders correctly', ()=>{
@@ -26,8 +26,7 @@ test('testing mock', ()=>{
     for (let index = 0; index < items.length; index++) {
       callback(items[index]);
     }
-  }
-  
+  }  
   const mockCalls = jest.fn();
   forEach([0,1], mockCalls);
   //console.log(jest);
@@ -39,3 +38,4 @@ jest.mock('./request');
 test('async test',()=>{
   getUser(4).then((name)=>expect(name).toMatch('Mark'));
 })
+
