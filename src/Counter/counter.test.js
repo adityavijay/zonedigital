@@ -17,14 +17,12 @@ describe('Counter testing', ()=>{
     });
 
     test('renders one button',()=>{
-        const comp = mount(<Counter/>);
+        const comp = shallow(<Counter/>);
         const button  = comp.find('button');
         expect(button.length).toBe(1);
-    });
+    });   
 
-   
-
-    test(' it increments counter on click',()=>{
+    test('it increments counter on click',()=>{
         const comp = shallow(<Counter/>);
         const button  = comp.find('button');
         button.simulate('click');
