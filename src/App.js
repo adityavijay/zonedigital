@@ -14,7 +14,7 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             <h1 className="App-title">Data merge and filtering</h1>
           </header>
-          <ListContainer/>
+          <ListContainer ad="asd"/>
           <Counter/>
         </div>
       </StoreProvider>
