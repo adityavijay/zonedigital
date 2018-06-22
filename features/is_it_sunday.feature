@@ -1,7 +1,8 @@
-Feature: Is it Friday yet?
-  Everybody wants to know when it's Friday
+Feature: Is it Sunday?
+Everyone wants to know when is it sunday for holidays
 
-  Scenario: Sunday isn't Friday
-    Given today is Sunday
-    When I ask whether it's Friday yet
-    Then I should be told "Nope"
+
+  Scenario: Friday, it's not sunday
+    Given today is Friday
+    When I ask for Sunday
+    Then it should say "no"

@@ -1,18 +1,21 @@
 const assert = require('assert');
 const { Given, When, Then } = require('cucumber');
+/*
+When I ask for Sunday
+Then I it should say "no"*/
 
-function isItFriday(today) {
-  return "Nope";
+function getAnswer(ans){
+    return ans=='Sunday'?'yes':'no';
 }
 
-Given('today is Sunday', function () {
-  this.today = 'Sunday'
+Given("today is Friday", function () {
+    this.today = 'Friday';
 });
 
-When('I ask whether it\'s Friday yet', function () {
-  this.actualAnswer = isItFriday(this.today)
-});
-
-Then('I should be told {string}', function (expectedAnswer) {
-  assert.equal(this.actualAnswer, expectedAnswer)
+When('I ask for Sunday', function () {
+    this.actualAnswer = getAnswer(this.today)
+  });
+  
+Then('it should say {string}', function (expectedAnswer) {
+    assert.equal(this.actualAnswer, expectedAnswer)
 });
