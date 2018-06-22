@@ -1,18 +1,18 @@
 const assert = require('assert');
-const {Given, When, Then, setDefaultTimeout} = require('cucumber');
+const { Given, When, Then } = require('cucumber');
 
-function getAnswer(day){
-    return this.today=='Sunday'?'yes':'no';
+function isItFriday(today) {
+  return "Nope";
 }
 
-Given("today is Friday",function(x){
-    this.today = 'Friday';
+Given('today is Sunday', function () {
+  this.today = 'Sunday'
 });
 
-When('I ask for sunday',function(){
-    this.actualAnswer = getAnswer(this.today);
+When('I ask whether it\'s Friday yet', function () {
+  this.actualAnswer = isItFriday(this.today)
 });
 
-Then('Then It should say {string}, today is Friday',function(expectedAnswer){
-    assert.equal(this.actualAnswer, expectedAnswer);
+Then('I should be told {string}', function (expectedAnswer) {
+  assert.equal(this.actualAnswer, expectedAnswer)
 });
