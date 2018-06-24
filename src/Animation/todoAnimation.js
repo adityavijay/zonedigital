@@ -24,11 +24,7 @@ export class TodoList extends React.Component {
     }
   
     render() {
-      const items = this.state.items.map((item, i) => (
-        <div key={item} onClick={() => this.handleRemove(i)}>
-          {item}
-        </div>
-      ));
+      
   
       return (
         <div>
@@ -37,10 +33,18 @@ export class TodoList extends React.Component {
             transitionName="example"
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}>
-  
-            {items}
+            <Items items = {this.state.items} parObj={this}/>
+            
           </ReactCSSTransitionGroup>
         </div>
       );
     }
+  }
+
+  const Items = ({items, parObj})=>{
+    return items.map((item, i) => (
+        <div key={item} onClick={() => parObj. handleRemove(i)}>
+          {item}
+        </div>
+      ));
   }
