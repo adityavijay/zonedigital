@@ -29,22 +29,23 @@ export class TodoList extends React.Component {
       return (
         <div>
           <button onClick={this.handleAdd}>Add Item</button>
-          <ReactCSSTransitionGroup
-            transitionName="example"
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={300}>
+          
             <Items items = {this.state.items} parObj={this}/>
             
-          </ReactCSSTransitionGroup>
+        
         </div>
       );
     }
   }
 
   const Items = ({items, parObj})=>{
-    return items.map((item, i) => (
+    return <ReactCSSTransitionGroup
+    transitionName="example"
+    transitionEnterTimeout={500}
+    transitionLeaveTimeout={300}>{items.map((item, i) => (
         <div key={item} onClick={() => parObj. handleRemove(i)}>
           {item}
         </div>
-      ));
+      ))} 
+      </ReactCSSTransitionGroup>
   }
