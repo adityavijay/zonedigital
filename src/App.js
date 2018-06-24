@@ -3,6 +3,7 @@ import StoreProvider from './store';
 import ListContainer from './DataList/DataListContainer';
 import {Counter} from './Counter/counter';
 import {ShowHide} from './showHide/showHide';
+import {TodoList} from './Animation/todoAnimation';
 import logo from './logo.svg';
 import './App.css';
 
@@ -18,6 +19,7 @@ class App extends Component {
           <ListContainer ad="asd"/>
           <Counter/>
           <ShowHide/>
+          <TodoList/>
         </div>
       </StoreProvider>
     );

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import "./showHide.css";
 export class ShowHide extends Component{
     constructor(props){
@@ -14,35 +15,57 @@ export class ShowHide extends Component{
     }
 
     componentWillUpdate(nProps, nState){
-        //no setState
-        if(!nState.show){
-            this.refs.BT.refs.elem.style.opacity = 1;
-        }
-        else{
-            this.refs.BT.refs.elem.style.opacity = 0;
-        }
+        //no setState 
     }
 
     componentDidUpdate(preProps, prevSt){
-        if(this.state.show){
-            this.refs.BT.refs.elem.style.opacity = 1;
-        }
-        else{
-            this.refs.BT.refs.elem.style.opacity = 0;
-        }
+
     }
+    componentWillEnter(){
+        const x=34;
+    }
+    componentDidEnter(){
+        const x=34;
+    }
+    componentWillLeave(){
+        const x=34;
+    }
+    componentDidLeave(){
+        const x=34;
+    }
+
     render(){
         const className = this.state.show?"showHideEle show":"showHideEle";
-        return <div ref="mydom">
+        return <div><ReactCSSTransitionGroup
+          transitionName="example"
+          transitionAppear={true}
+        
+          >
            <button onClick={()=>this.setState({show: !this.state.show})}>onClick</button>
-           <ButtonText ref="BT" className={className}/>
-           <ButtonText1 ref="BT1" className={className}/>
+           <ButtonText  show={this.state.show} className={className}/>
+           <ButtonText1  className={className}/>
+          
+        </ReactCSSTransitionGroup>
+           
         </div>
     }
 }
 
 
 class ButtonText extends Component{
+    
+    componentWillEnter(){
+        const x=34;
+    }
+    componentDidEnter(){
+        const x=34;
+    }
+    componentWillLeave(){
+        const x=34;
+    }
+    componentDidLeave(){
+        const x=34;
+    }
     componentWillReceiveProps(nProps,nState){
         this.setState({st:nProps});//ok setState
     }
@@ -59,7 +82,7 @@ class ButtonText extends Component{
     }
 
     render(){
-        return <div className={this.props.className} ref="elem">Show</div>    
+        return this.props.show?<div className={this.props.className} ref="elem">Show</div>:null;    
     }
 }
 
