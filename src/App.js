@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import StoreProvider from './store';
 import ListContainer from './DataList/DataListContainer';
 import {Counter} from './Counter/counter';
+import {ShowHide} from './showHide/showHide';
 import logo from './logo.svg';
 import './App.css';
 
@@ -16,6 +17,7 @@ class App extends Component {
           </header>
           <ListContainer ad="asd"/>
           <Counter/>
+          <ShowHide/>
         </div>
       </StoreProvider>
     );
